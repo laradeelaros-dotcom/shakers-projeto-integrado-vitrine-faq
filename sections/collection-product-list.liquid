@@ -1,0 +1,40 @@
+<section class="container-vitrine">
+  <h2>{{ section.settings.titulo_secao }}</h2>
+
+
+  <div class="grid_de_produtos">
+    {% comment  %} loop para percorrer os produtos da seção selecionada no admin {% endcomment %}
+    {% for product in collections[section.settings.colecao_selecionada].products %}
+      <div class="card_produtos">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image |  image_url: width: 300  }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Listagem da Coleção",
+    "settings": [
+      {
+        "type": "text",
+        "id": "titulo_secao",
+        "label": "Título da Seção",
+        "default": "Confira nossa coleção de produtos."
+      }, {
+        "type": "collection",
+        "id": "collection_select",
+        "label": "Selecione a Coleção desejada."
+      }
+    ],
+    "presets": [
+      {
+        "name": "Listagem da Coleção"
+      }
+    ]
+  }
+{% endschema %}
