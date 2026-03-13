@@ -1,0 +1,53 @@
+<section class="hero-slider">
+    <img src="{{ section.settings.banner_principal |  image_url: width: 1000 }}" alt= "{{ section.settings.banner_principal.alt }}"
+
+    <div class="hero-content">
+        <h1>{{ section.settings.titulo }}</h1>
+        <p>{{ section.settings.texto_apoio }}</p>
+        <a href="{{ section.settings.link_botao }}" class="button">
+            {{ section.settings.texto_botao }}
+        </a>
+    </div>
+</section>
+
+
+
+{%  schema  %}
+{
+    "name": "Hero-slider",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "banner_principal",
+                "label": "imagem do banner"
+            },
+            {
+                "type": "text",
+                "id": "titulo",
+                "label": "Título do banner",
+                "default": "Título de Exemplo"
+            },
+            {
+                "type": "richtext",
+                "id": "texto_de_apoio",
+                "label": "Texto de Apoio"
+            },
+            {
+                "type": "text",
+                "id": "texto_botao",
+                "label": "Texto do Botão",
+                "default": "Compre agora!"
+            },
+            {
+                "type": "url",
+                "id": "url_botao",
+                "label": "Link do Botão"
+            }
+        ],
+        "presets": [
+            {
+                "name": "Hero Slider Default"
+            }
+        ]
+}
+{% endschema %}
